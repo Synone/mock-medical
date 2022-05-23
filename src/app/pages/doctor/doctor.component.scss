@@ -1,0 +1,29 @@
+@import "../../shared/styles/variable";
+
+.no-mrRL {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.fa-doctor {
+  padding: 40px 30px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    &-title {
+      color: $white;
+    }
+    &-add {
+      .fa-addBtn {
+        background-color: $violet !important;
+        transition: all ease 0.2s;
+        font-family: "Inter", sans-serif;
+        font-weight: 300;
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}

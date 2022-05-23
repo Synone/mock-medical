@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AppointmentsService } from 'src/app/services/appointments.service';
 import { ListItem } from './list-item';
 
@@ -7,14 +8,21 @@ import { ListItem } from './list-item';
   templateUrl: './list-appointment.component.html',
   styleUrls: ['./list-appointment.component.scss'],
 })
-export class ListAppointmentComponent implements OnInit {
+export class ListAppointmentComponent implements OnInit, OnDestroy {
   listItems: ListItem[] = [];
+  subscription?: Subscription;
   constructor(private doctorService: AppointmentsService) {}
 
   ngOnInit() {
-    this.doctorService.getListAppoint().subscribe((listItem: any) => {
-      this.listItems = listItem.data;
-      console.log(listItem);
-    });
+    this.subscription = this.doctorService
+      .getListAppoint()
+      .subscribe((listItem: any) => {
+        this.listItems = listItem.data;
+      });
+  }
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.subscription?.unsubscribe();
   }
 }

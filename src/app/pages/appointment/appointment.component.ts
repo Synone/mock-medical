@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
   styleUrls: ['./appointment.component.scss'],
 })
 export class AppointmentComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
+
   ngOnInit() {}
+  newAppoint(): void {
+    this.router.navigate(['new-appointment']);
+  }
 }
