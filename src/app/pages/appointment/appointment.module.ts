@@ -4,7 +4,7 @@ import { ListAppointmentComponent } from './list-appointment/list-appointment.co
 import { AppointmentComponent } from './appointment.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentsService } from 'src/app/services/appointments.service';
@@ -21,6 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CalendarModule,
     BrowserAnimationsModule,
     BrowserModule,
+    ReactiveFormsModule
   ],
   declarations: [
     NewAppointmentComponent,

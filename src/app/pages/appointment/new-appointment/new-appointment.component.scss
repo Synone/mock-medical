@@ -1,10 +1,8 @@
-select {
-  margin: 0 !important;
-}
-.no-gutter {
-  padding: 0;
-  margin: 0;
-}
+@import "../../../shared/styles/_variable.scss";
+// select {
+//   margin: 0 !important;
+// }
+
 .row {
   .user-phone-number {
     background-color: #293a58;
@@ -16,10 +14,23 @@ select {
     margin-left: 85px;
     margin-top: 30px;
     input {
+      outline: none;
+      padding: 10px;
+      padding-left: 35px;
+      border: 1px solid #7988a3;
       background-color: #293a58;
-      border-color: #7988a3;
+      border-radius: 5px;
       color: #9aa0a8;
-      width: 400px;
+      min-width: 400px;
+      color-scheme: white;
+    }
+    select {
+      padding: 10px;
+      min-height: 46px;
+      margin: 0 !important;
+    }
+    i {
+      color: $white;
     }
   }
 
@@ -33,5 +44,23 @@ select {
   .image {
     margin-left: 85px;
     margin-top: 30px;
+    .fa-btn-update {
+      border: 1px solid #293a58;
+      padding: 5px 13px;
+      border-radius: 5px;
+      margin-top: 5px;
+      outline: none;
+      color: $white;
+      background-color: #293a58;
+      transition: all 0.5s;
+      &:hover {
+        transform: scale(0.95);
+      }
+    }
+  }
+  .is-invalid {
+    color: rgb(247, 49, 49);
+    margin-left: 85px;
+    margin-top: 10px;
   }
 }

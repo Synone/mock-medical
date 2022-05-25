@@ -32,6 +32,7 @@
         background-image: url("../../../assets/icons/vector.svg") ;
       }
     }
+    
     &__cabinet {
       width: 150px;
       height: 40px;
@@ -45,6 +46,11 @@
       }
     }
     &__new {
+      ::ng-deep{
+        .p-button{
+          padding: 7px;
+        }
+      }
       .fa-newBtn {
         background-color: $violet !important;
         transition: all ease 0.2s;

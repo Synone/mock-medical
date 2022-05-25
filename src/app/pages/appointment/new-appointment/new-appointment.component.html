@@ -1,62 +1,131 @@
-<div class="row no-gutter">
-  <div class="col-md-2">
-    <div class="image">
-      <img src="https://image.shutterstock.com/image-vector/people-icon-person-user-vector-260nw-1396650341.jpg"
-        alt="..." class="img-thumbnail">
+<form [formGroup]="userForm">
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="image">
+        <img
+          src="https://image.shutterstock.com/image-vector/people-icon-person-user-vector-260nw-1396650341.jpg"
+          alt="..."
+          class="img-thumbnail"
+        />
+        <button type="button" class="fa-btn-update">Update</button>
+      
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <div class="field col-12 md:col-4">
+        <div class="p-input-icon-left">
+          <i class="pi pi-user"></i>
+          <input
+            type="text"
+            class="p-inputtext-sm"
+            pInputText
+            placeholder="Enter username..."
+            formControlName="userName"
+          />
+        </div>
+        <div
+          *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
+          class="is-invalid"
+        >
+          <div *ngIf="userName?.errors?.['required']">Name is required.</div>
+          <div *ngIf="userName?.errors?.['minlength']">
+            Name must be at least 4 characters long.
+          </div>
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <div class="user-phone-number p-input-icon-left">
+          <i class="pi pi-phone"></i>
+          <input
+            type="text"
+            class="p-inputtext-sm"
+            pInputText
+            placeholder="Enter user phone number..."
+            formControlName="userPhone"
+          />
+        </div>
+        <div
+          *ngIf="userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)"
+          class="is-invalid"
+        >
+          <div *ngIf="userPhone?.errors?.['required']">Phone is required.</div>
+          <div *ngIf="userPhone?.errors?.['minlength']">
+            Phone must be at least 10 characters long.
+          </div>
+          <div *ngIf="userPhone?.errors?.['pattern']">Phone must be valid.</div>
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <div class="p-input-icon-left">
+          <select class="form-select form-select-sm mb-2 fa-custom-select">
+            <option selected>Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <div class="p-input-icon-left">
+          <i class="pi pi-clock"></i>
+          <input
+            type="time"
+            class="p-inputtext-sm"
+            pInputText
+            formControlName="userTime"
+          />
+        </div>
+        <div
+          *ngIf="userTime?.invalid && (userTime?.dirty || userTime?.touched)"
+          class="is-invalid"
+        >
+          <div *ngIf="userTime?.errors?.['required']">Time is required.</div>
+        </div>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <div class="p-input-icon-left">
+          <i class="pi pi-calendar"></i>
+          <input
+            type="date"
+            class="p-inputtext-sm"
+            pInputText
+            formControlName="userDate"
+          />
+        </div>
+
+        <div
+          *ngIf="userDate?.invalid && (userDate?.dirty || userDate?.touched)"
+          class="is-invalid"
+        >
+          <div *ngIf="userDate?.errors?.['required']">Date is required.</div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="col-auto">
-    <div class="field col-12 md:col-4">
-      <div class="p-input-icon-left">
-        <i class="pi pi-user"></i>
-        <input type="text" class="p-inputtext-sm" pInputText [(ngModel)]="userName" placeholder="Enter username...">
-      </div>
-    </div>
-
-    <div class="field col-12 md:col-4">
-      <div class="user-phone-number p-input-icon-left">
-        <i class="pi pi-phone"></i>
-        <input type="text" class="p-inputtext-sm" pInputText [(ngModel)]="userName"
-          placeholder="Enter user phone number...">
-      </div>
-    </div>
-
-    <div class="field col-12 md:col-4">
-      <div class="p-input-icon-left">
-        <select class="form-select form-select-sm mb-2 fa-custom-select">
-          <option selected>Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="field col-12 md:col-4">
-      <div class="p-input-icon-left">
-        <i class="pi pi-clock"></i>
-        <input type="time" class="p-inputtext-sm" pInputText>
-      </div>
-    </div>
-
-    <div class="field col-12 md:col-4">
-      <div class="p-input-icon-left">
-        <i class="pi pi-calendar"></i>
-        <input type="date" class="p-inputtext-sm" pInputText>
+  <div class="row" style="margin-top: 25px">
+    <div class="col-lg-7">
+      <div class="d-flex flex-row-reverse">
+        <div class="p-2 fa-appointment-header__new">
+          <button class="p-button-outlined" pButton type="button">
+            Cancel
+          </button>
+        </div>
+        <div class="p-2 fa-appointment-header__new">
+          <button
+            [disabled]="!userForm.valid"
+            class="p-button-outlined"
+            pButton
+            type="button"
+            (click)="sendData(userForm.value)"
+          >
+            Save
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row no-gutter" style="margin-top: 25px;">
-  <div class="col-lg-7">
-    <div class="d-flex flex-row-reverse">
-      <div class="p-2 fa-appointment-header__new">
-        <button class="p-button-outlined" pButton type="button">Cancel</button>
-      </div>
-      <div class="p-2 fa-appointment-header__new">
-        <button class="p-button-outlined" pButton type="button">Save</button>
-      </div>
-    </div>
-  </div>
-</div>
+</form>
