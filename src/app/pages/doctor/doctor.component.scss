@@ -1,8 +1,7 @@
 @import "../../shared/styles/variable";
 
 .no-mrRL {
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
 }
 
 .fa-doctor {
@@ -11,8 +10,12 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
     &-title {
       color: $white;
+      font-family: "Inter", sans-serif;
+      font-size: 1.2rem;
+      margin-left: 10px;
     }
     &-add {
       .fa-addBtn {
@@ -26,4 +29,13 @@
       }
     }
   }
+}
+.fa-doctor__body-card {
+  background-color: $darkblue;
+  &.p-card {
+    background-color: $darkblue;
+  }
+}
+.ui-card {
+  background-color: lightblue !important;
 }
