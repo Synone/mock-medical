@@ -6,6 +6,6 @@ import { ListItem } from '../pages/appointment/list-appointment/list-item';
 export class AppointmentsService {
   constructor(private http: HttpClient) {}
   getListAppoint() {
-    return this.http.get<ListItem[]>('../../assets/datas/patients.json');
+    return this.http.get<ListItem[]>('../../assets/data/patients.json');
   }
 }

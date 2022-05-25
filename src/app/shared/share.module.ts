@@ -9,16 +9,24 @@ import { NgModule } from '@angular/core';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
 
+const declarations: any[] = [
+  SidebarComponent,
+  HeaderComponent,
+  DashboardComponent,
+];
+
+const imports = [
+  FormsModule,
+  BrowserAnimationsModule,
+  SplitButtonModule,
+  InputTextModule,
+  IconModule,
+];
+
 @NgModule({
-  declarations: [SidebarComponent, HeaderComponent, DashboardComponent],
-  imports: [
-    FormsModule,
-    BrowserAnimationsModule,
-    SplitButtonModule,
-    InputTextModule,
-    IconModule
-  ],
-  exports: [SidebarComponent, HeaderComponent],
+  declarations: [declarations],
+  imports: [imports],
+  exports: [...imports, ...declarations],
   providers: [MessageService],
 })
 export class ShareModule {}
