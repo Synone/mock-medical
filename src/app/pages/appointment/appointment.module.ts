@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AppointmentsService } from 'src/app/services/appointments.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { BrowserModule } from '@angular/platform-browser';
+import { FileUploadModule } from 'primeng/fileupload';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -19,9 +20,9 @@ import { BrowserModule } from '@angular/platform-browser';
     TableModule,
     HttpClientModule,
     CalendarModule,
-    BrowserAnimationsModule,
+    FileUploadModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     NewAppointmentComponent,

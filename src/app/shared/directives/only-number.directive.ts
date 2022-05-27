@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: 'app-app',
+  selector: '[only-number]',
 })
-export class AppDirective {}
+export class OnlyNumberDirective {}

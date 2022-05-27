@@ -9,10 +9,14 @@ import { NgModule } from '@angular/core';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
+import { ShowErrorMsgDirective } from './directives/show-mesage.directive';
+import { OnlyNumberDirective } from './directives/only-number.directive';
 const declarations: any[] = [
   SidebarComponent,
   HeaderComponent,
   DashboardComponent,
+  ShowErrorMsgDirective,
+  OnlyNumberDirective,
 ];
 
 const imports = [

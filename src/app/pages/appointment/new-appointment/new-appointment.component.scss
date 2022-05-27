@@ -7,9 +7,13 @@
     color: #9aa0a8;
     width: 400px;
   }
+  .fa-input-wrapper {
+    margin-bottom: 20px;
+    &:first-child {
+      margin-top: 60px;
+    }
+  }
   .p-input-icon-left {
-    margin-left: 85px;
-    margin-top: 30px;
     input {
       outline: none;
       padding: 10px;
@@ -19,7 +23,7 @@
       border-radius: 5px;
       color: #9aa0a8;
       min-width: 400px;
-      color-scheme: white;
+      // color-scheme: white;
     }
     select {
       padding: 10px;
@@ -39,8 +43,9 @@
   }
 
   .image {
-    margin-left: 85px;
-    margin-top: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    width: 220px;
     .fa-btn-update {
       border: 1px solid #293a58;
       padding: 5px 13px;
@@ -55,9 +60,10 @@
       }
     }
   }
-  .is-invalid {
-    color: rgb(247, 49, 49);
-    margin-left: 85px;
-    margin-top: 10px;
+  .isInvalid {
+    color: #ff447c;
+
+    font-size: 0.8rem;
+    font-style: italic;
   }
 }

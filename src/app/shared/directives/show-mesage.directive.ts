@@ -1,6 +1,9 @@
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
   selector: '[showErrorMsg]',
 })
-export class ShowErrorMsg {}
+export class ShowErrorMsgDirective {
+  @Input() showErrorMsg!: string;
+  
+}
