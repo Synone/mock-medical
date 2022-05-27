@@ -4,16 +4,17 @@ import { AppointmentModule } from './pages/appointment/appointment.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
-import { ShareModule } from './shared/share.module';
+import { SharedModule } from './shared/shared.module';
 import { DoctorModule } from './pages/doctor/doctor.module';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     AppointmentModule,
-    ShareModule,
+    SharedModule,
     DoctorModule,
   ],
   providers: [],

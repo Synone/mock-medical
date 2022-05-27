@@ -4,12 +4,12 @@ import { MenuItem, MessageService } from 'primeng/api';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   value: any;
   items!: MenuItem[];
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
   ngOnInit() {
     this.items = [
@@ -21,13 +21,13 @@ export class HeaderComponent implements OnInit {
         },
       },
       {
-        label: 'Delete',
+        label: 'Sign Out',
         icon: 'pi pi-times',
         command: () => {
           this.delete();
         },
       },
-      { label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io' },
+      { label: 'Medix.info', icon: 'pi pi-info', url: 'http://angular.io' },
       { separator: true },
       { label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup'] },
     ];
@@ -55,5 +55,4 @@ export class HeaderComponent implements OnInit {
       detail: 'Data Deleted',
     });
   }
-
 }

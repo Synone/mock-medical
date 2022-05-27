@@ -7,6 +7,28 @@ import { MenuItem } from 'primeng/api';
 })
 export class DoctorComponent implements OnInit {
   constructor() {}
+  items!: MenuItem[];
+  isActive: boolean = true;
   addDoctor(): void {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Update',
+        icon: 'pi pi-refresh',
+        command: () => {
+          this.update();
+        },
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-times',
+        command: () => {
+          this.delete();
+        },
+      },
+    ];
+  }
+  update() {}
+
+  delete() {}
 }

@@ -1,41 +1,41 @@
-@import "../../shared/styles/variable";
+// @import "../../shared/styles/variable";
 
-.no-mrRL {
-  margin: 0;
-}
+// .no-mrRL {
+//   margin: 0;
+// }
 
-.fa-doctor {
-  padding: 40px 30px;
+// .fa-doctor {
+//   padding: 40px 30px;
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    &-title {
-      color: $white;
-      font-family: "Inter", sans-serif;
-      font-size: 1.2rem;
-      margin-left: 10px;
-    }
-    &-add {
-      .fa-addBtn {
-        background-color: $violet !important;
-        transition: all ease 0.2s;
-        font-family: "Inter", sans-serif;
-        font-weight: 300;
-        &:active {
-          transform: scale(0.9);
-        }
-      }
-    }
-  }
-}
-.fa-doctor__body-card {
-  background-color: $darkblue;
-  &.p-card {
-    background-color: $darkblue;
-  }
-}
-.ui-card {
-  background-color: lightblue !important;
-}
+//   &__header {
+//     display: flex;
+//     justify-content: space-between;
+//     margin-bottom: 20px;
+//     &-title {
+//       color: $white;
+//       font-family: "Inter", sans-serif;
+//       font-size: 1.2rem;
+//       margin-left: 10px;
+//     }
+//     &-add {
+//       .fa-addBtn {
+//         background-color: $violet !important;
+//         transition: all ease 0.2s;
+//         font-family: "Inter", sans-serif;
+//         font-weight: 300;
+//         &:active {
+//           transform: scale(0.9);
+//         }
+//       }
+//     }
+//   }
+// }
+// .fa-doctor__body-card {
+//   background-color: $darkblue;
+//   &.p-card {
+//     background-color: $darkblue;
+//   }
+// }
+// .ui-card {
+//   background-color: lightblue !important;
+// }

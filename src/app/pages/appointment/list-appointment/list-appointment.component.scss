@@ -1,5 +1,5 @@
 @import "../../../shared/styles/variable";
-p{
+p {
   margin-bottom: 0;
 }
 .fa-list-patients {
@@ -36,7 +36,7 @@ p{
     background-color: $light-green;
     border-radius: 6px;
   }
-  &__canceled{
+  &__canceled {
     padding: 10px 5px;
     color: $red;
     background-color: $light-red;
@@ -46,7 +46,6 @@ p{
   &__items {
     display: flex;
     align-items: center;
-   
   }
 
   td,
@@ -60,11 +59,12 @@ p{
     font-size: 13px;
     color: $white;
   }
-  th:nth-child(6), th:last-child{
+  th:nth-child(6),
+  th:last-child {
     text-align: center;
-  };
-  td:last-child{
-    .fa-list-patients__appointment{
+  }
+  td:last-child {
+    .fa-list-patients__appointment {
       text-align: center;
     }
   }
@@ -74,19 +74,19 @@ p{
       &:first-child {
         border-radius: 6px 0 0 6px;
       }
-    
+
       &:last-child {
         border-radius: 0 6px 6px 0;
       }
     }
   }
-  .fa-body-table{
-    td{
-      &:first-child{
+  .fa-body-table {
+    td {
+      &:first-child {
         padding-left: 10px;
       }
-      &:nth-child(6){
-        .fa-list-patients__icons-container{
+      &:nth-child(6) {
+        .fa-list-patients__icons-container {
           justify-content: center;
         }
       }
