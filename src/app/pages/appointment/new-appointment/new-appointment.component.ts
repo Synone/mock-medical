@@ -29,21 +29,14 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
     minlength: `Must be at least ${this.minlength} characters`,
     pattern: 'Must be numbers!',
   };
-  private buildForm(): void {
-    const me = this;
-    me.userForm = me.fb.group({
-      username: ['', [Validators.required, Validators.minLength(me.minlength)]],
-      userphone: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(me.minlength),
-          Validators.pattern('[- +()0-9]+'),
-        ],
-      ],
-      appointmentTime: ['', [Validators.required]],
-      appointmentDate: ['', [Validators.required]],
-    });
+
+  private focusElementInvalid() {
+    const listElement = document.querySelectorAll('input.ng-invalid');
+    console.log(listElement.item);
+    for (let i = 0; i < listElement.length; i++) {
+      (listElement.item(i) as HTMLElement)?.focus();
+      return;
+    }
   }
   public isValidControl(controlName: string): boolean {
     const me = this;
@@ -79,31 +72,48 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
     const me = this;
     me.buildForm();
   }
-
-  // get userName() {
-  //   return this.userForm.get('userName');
-  // }
-
-  // get userPhone() {
-  //   return this.userForm.get('userPhone');
-  // }
-
-  // get userTime() {
-  //   return this.userForm.get('userTime');
-  // }
-
-  // get userDate() {
-  //   return this.userForm.get('userDate');
-  // }
-
-  sendData(valueForm: any) {
-    console.log(valueForm);
-    this._location.back();
+  // Initialize form
+  private buildForm(): void {
+    const me = this;
+    me.userForm = me.fb.group({
+      [me.fieldKeyNames.username]: [
+        '',
+        [Validators.required, Validators.minLength(me.minlength)],
+      ],
+      [me.fieldKeyNames.userphone]: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(me.minlength),
+          Validators.pattern('[- +()0-9]+'),
+        ],
+      ],
+      [me.fieldKeyNames.appointmentTime]: ['', [Validators.required]],
+      [me.fieldKeyNames.appointmentDate]: ['', [Validators.required]],
+    });
   }
-  onBasicUpload(event: any) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
+  // Submit form function
+  onSubmitFormGroup() {
+    const me = this;
+    const isValid = me.userForm.valid;
+    me.userForm.markAllAsTouched();
+    me.userForm.markAsDirty();
+    me.userForm.updateValueAndValidity();
+    Object.keys(me.userForm.controls).map((controlName) => {
+      const control = me.userForm.get(controlName);
+      control?.markAsDirty();
+      control?.markAllAsTouched();
+      control?.updateValueAndValidity();
+    });
+    console.log(isValid);
+    if (!isValid) {
+      me.focusElementInvalid();
+      return;
     }
-    console.log(this.uploadedFiles);
+    const valueOfForm = me.userForm.getRawValue();
+    console.log(valueOfForm);
+    me._location.back();
   }
+
+  onBasicUpload(event: any) {}
 }

@@ -39,6 +39,13 @@
           <input type="text" class="p-inputtext-sm" pInputText placeholder="Enter your phone number..."
             [formControlName]="fieldKeyNames.userphone" />
         </div>
+        <div *ngIf="isValidControl(fieldKeyNames.userphone)" class="isInvalid">
+
+          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.userphone)">
+            !
+            {{msg}}
+          </div>
+        </div>
         <!-- <div *ngIf="userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)" class="is-invalid">
           <div *ngIf="userPhone?.errors?.['required']">Phone is required.</div>
           <div *ngIf="userPhone?.errors?.['minlength']">
@@ -90,8 +97,7 @@
           </button>
         </div>
         <div class="p-2 fa-appointment-header__new">
-          <button [disabled]="!userForm.valid" class="p-button-outlined" pButton type="button"
-            (click)="sendData(userForm.value)">
+          <button class="p-button-outlined" pButton type="button" (click)="onSubmitFormGroup()">
             Save
           </button>
         </div>
