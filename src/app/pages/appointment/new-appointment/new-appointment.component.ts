@@ -1,6 +1,13 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
 import { BaseComponent } from 'src/app/base/base.component';
 
 @Component({
@@ -9,11 +16,14 @@ import { BaseComponent } from 'src/app/base/base.component';
   styleUrls: ['./new-appointment.component.scss'],
 })
 export class NewAppointmentComponent extends BaseComponent implements OnInit {
-  uploadedFiles: any[] = [];
-
   constructor(private fb: FormBuilder, private _location: Location) {
     super();
   }
+  ngOnInit() {
+    const me = this;
+    me.buildForm();
+  }
+  uploadedFiles: any[] = [];
   userForm!: FormGroup;
 
   public fieldKeyNames = {
@@ -24,10 +34,12 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
     appointmentDate: 'appointmentDate',
   };
   private minlength: number = 4;
+  private minlengthPhone: number = 8;
   public errorMessages: any = {
     required: 'You must enter this field!',
     minlength: `Must be at least ${this.minlength} characters`,
     pattern: 'Must be numbers!',
+    minPhoneNumber: `Phone number must be at least ${this.minlengthPhone} numbers.`,
   };
 
   private focusElementInvalid() {
@@ -68,10 +80,20 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
 
     return messagesList;
   }
-  ngOnInit() {
-    const me = this;
-    me.buildForm();
+
+  // Custom Validator Min length of Phone number
+  private minlengthPhoneNumber(lengthValue: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      if (!value) {
+        return null;
+      }
+      const minLength = value.length >= lengthValue;
+
+      return !minLength ? { minPhoneNumber: true } : null;
+    };
   }
+
   // Initialize form
   private buildForm(): void {
     const me = this;
@@ -84,8 +106,9 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.minLength(me.minlength),
+          // Validators.minLength(me.minlength),
           Validators.pattern('[- +()0-9]+'),
+          this.minlengthPhoneNumber(me.minlengthPhone),
         ],
       ],
       [me.fieldKeyNames.appointmentTime]: ['', [Validators.required]],
@@ -96,9 +119,10 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
   onSubmitFormGroup() {
     const me = this;
     const isValid = me.userForm.valid;
-    me.userForm.markAllAsTouched();
-    me.userForm.markAsDirty();
-    me.userForm.updateValueAndValidity();
+    // me.userForm.markAllAsTouched();
+    // me.userForm.markAsDirty();
+    // me.userForm.updateValueAndValidity();
+    // console.log(Object.keys(me.userForm.controls));
     Object.keys(me.userForm.controls).map((controlName) => {
       const control = me.userForm.get(controlName);
       control?.markAsDirty();
