@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ListItem } from '../pages/appointment/list-appointment/list-item';
+import { ListItem } from '../../pages/appointment/list-appointment/list-item';
 
 @Injectable()
 export class AppointmentsService {

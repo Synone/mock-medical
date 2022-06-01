@@ -3,38 +3,36 @@ import { NewAppointmentComponent } from './new-appointment/new-appointment.compo
 import { ListAppointmentComponent } from './list-appointment/list-appointment.component';
 import { AppointmentComponent } from './appointment.component';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from 'src/app/material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { TableModule } from 'primeng/table';
 import { HttpClientModule } from '@angular/common/http';
-import { AppointmentsService } from 'src/app/services/appointments.service';
+import { AppointmentsService } from 'src/app/shared/services/appointments.service';
 import { CalendarModule } from 'primeng/calendar';
-import { BrowserModule } from '@angular/platform-browser';
-import { FileUploadModule } from 'primeng/fileupload';
+
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { AppointmentRoutes } from './appointment.routing';
+
+const declarations = [ListAppointmentComponent, AppointmentComponent];
+
+const imports: any = [
+  CommonModule,
+  MenuModule,
+  ButtonModule,
+  // FormsModule,
+  TableModule,
+  HttpClientModule,
+  CalendarModule,
+  // FileUploadModule,
+  // ReactiveFormsModule,
+  AppointmentRoutes,
+];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    TableModule,
-    HttpClientModule,
-    CalendarModule,
-    FileUploadModule,
-    BrowserModule,
-    ReactiveFormsModule,
-  ],
-  declarations: [
-    NewAppointmentComponent,
-    ListAppointmentComponent,
-    AppointmentComponent,
-  ],
+  imports: [...imports],
+  declarations: [...declarations],
   bootstrap: [AppointmentComponent],
-  exports: [
-    NewAppointmentComponent,
-    ListAppointmentComponent,
-    AppointmentComponent,
-  ],
+  exports: [...declarations, ...imports],
   providers: [AppointmentsService],
 })
 export class AppointmentModule {}

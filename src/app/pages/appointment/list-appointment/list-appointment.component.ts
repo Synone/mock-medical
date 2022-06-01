@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AppointmentsService } from 'src/app/services/appointments.service';
+import { AppointmentsService } from 'src/app/shared/services/appointments.service';
 import { ListItem } from './list-item';
 
 @Component({
