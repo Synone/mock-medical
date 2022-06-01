@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
-import { NewAppointmentComponent } from './pages/appointment/new-appointment/new-appointment.component';
+import { PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -23,6 +22,13 @@ const routes: Routes = [
         (md) => md.NewAppointmentModule
       ),
   },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./pages/dashboard/dashboard.module').then((md) => {
+        return md.DashBoardModule;
+      }),
+  },
 
   {
     path: '',
@@ -32,7 +38,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,6 +1,6 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-// import { CommonModule } from '@angular/common';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
@@ -10,8 +10,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { ResponseInterceptor } from './shared/interceptors/response.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-const declarations = [AppComponent, LayoutComponent, SidebarComponent];
+
+const declarations = [AppComponent, LayoutComponent];
 
 @NgModule({
   declarations: [...declarations],
