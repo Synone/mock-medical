@@ -9,14 +9,13 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { OnlyNumberDirective } from './directives/only-number.directive';
 import { InnerMsgDirective } from './directives/inner-msg.directive';
-import { BaseComponent } from '../base/base.component';
+
 import { CommonModule } from '@angular/common';
 const declarations: any[] = [
   SidebarComponent,
   HeaderComponent,
   InnerMsgDirective,
   OnlyNumberDirective,
-  BaseComponent,
 ];
 
 const imports = [

@@ -8,7 +8,8 @@ import {
   ValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { BaseComponent } from 'src/app/base/base.component';
+
+import { BaseComponent } from 'src/app/shared/components/base.component';
 
 @Component({
   selector: 'app-new-appointment',
@@ -19,6 +20,7 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
   constructor(private fb: FormBuilder, private _location: Location) {
     super();
   }
+  onDestroy(): void {}
   ngOnInit() {
     const me = this;
     me.buildForm();
@@ -119,23 +121,24 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
   onSubmitFormGroup() {
     const me = this;
     const isValid = me.userForm.valid;
-    // me.userForm.markAllAsTouched();
-    // me.userForm.markAsDirty();
-    // me.userForm.updateValueAndValidity();
-    // console.log(Object.keys(me.userForm.controls));
+
+    me.userForm.markAllAsTouched();
+    me.userForm.markAsDirty();
+    me.userForm.updateValueAndValidity();
+
     Object.keys(me.userForm.controls).map((controlName) => {
       const control = me.userForm.get(controlName);
       control?.markAsDirty();
       control?.markAllAsTouched();
       control?.updateValueAndValidity();
     });
-    console.log(isValid);
+
     if (!isValid) {
       me.focusElementInvalid();
       return;
     }
     const valueOfForm = me.userForm.getRawValue();
-    console.log(valueOfForm);
+
     me._location.back();
   }
 
