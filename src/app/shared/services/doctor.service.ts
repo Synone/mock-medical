@@ -11,10 +11,10 @@ export class DoctorService extends BaseService {
     super(httpClient);
   }
 
-  public getDoctors(): Observable<DoctorResponse.GetDoctors> {
+  public getDoctors() {
     const me = this;
-    const uri = '/api/doctors';
-    return me.get(uri);
+    const uri = '../../../assets/data/doctors.json';
+    return me.httpClient.get(uri);
   }
 
   public createDoctor(

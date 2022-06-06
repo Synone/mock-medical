@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { map } from 'rxjs';
+import { DoctorModel } from 'src/app/shared/models/doctor.model';
+import { DoctorService } from 'src/app/shared/services/doctor.service';
 @Component({
   selector: 'app-doctor-list',
   templateUrl: './doctor-list.component.html',
@@ -7,24 +10,26 @@ import { MenuItem } from 'primeng/api';
 })
 export class DoctorListComponent implements OnInit {
   items!: MenuItem[];
-  isActive: boolean = true;
+  isActive: boolean = false;
+  @Input() DoctorList?: DoctorModel.DoctorInfo[] = [];
 
-  constructor() {}
+  constructor(private doctorService: DoctorService) {}
 
   ngOnInit() {
-    this.items = [
+    const me = this;
+    me.items = [
       {
         label: 'Update',
         icon: 'pi pi-refresh',
         command: () => {
-          this.update();
+          me.update();
         },
       },
       {
         label: 'Delete',
         icon: 'pi pi-times',
         command: () => {
-          this.delete();
+          me.delete();
         },
       },
     ];

@@ -15,7 +15,6 @@ export class AppointmentsService {
   );
   getListAppoint() {
     const me = this;
-
     return me.http.get<ListItem[]>('../../../assets/data/patients.json');
   }
 
