@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs';
+import { BaseComponent } from 'src/app/shared/components/base.component';
 import { AppointmentsService } from 'src/app/shared/services/appointments.service';
 import { ListItem } from './list-item';
 
@@ -8,21 +9,28 @@ import { ListItem } from './list-item';
   templateUrl: './list-appointment.component.html',
   styleUrls: ['./list-appointment.component.scss'],
 })
-export class ListAppointmentComponent implements OnInit, OnDestroy {
-  listItems: ListItem[] = [];
-  subscription?: Subscription;
-  constructor(private doctorService: AppointmentsService) {}
+export class ListAppointmentComponent
+  extends BaseComponent
+  implements OnInit, OnDestroy
+{
+  listItems!: ListItem[];
+
+  onDestroy(): void {
+    const me = this;
+    alert('Move to new other sites!');
+    console.log(me.listItems);
+  }
+  constructor(private appointService: AppointmentsService) {
+    super();
+  }
 
   ngOnInit() {
-    this.subscription = this.doctorService
+    const me = this;
+    me.appointService
       .getListAppoint()
+      .pipe(takeUntil(me.destroy$))
       .subscribe((listItem: any) => {
-        this.listItems = listItem.data;
+        me.listItems = listItem.data;
       });
-  }
-  ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.subscription?.unsubscribe();
   }
 }

@@ -10,7 +10,14 @@ import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
 import { AppointmentRoutes } from './appointment.routing';
 import { PaginatorModule } from 'primeng/paginator';
-const declarations = [ListAppointmentComponent, AppointmentComponent];
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
+import { FileUploadModule } from 'primeng/fileupload';
+const declarations = [
+  ListAppointmentComponent,
+  AppointmentComponent,
+  NewAppointmentComponent,
+];
 
 const imports: any = [
   CommonModule,
@@ -21,6 +28,9 @@ const imports: any = [
   CalendarModule,
   PaginatorModule,
   AppointmentRoutes,
+  FormsModule,
+  FileUploadModule,
+  ReactiveFormsModule,
 ];
 
 @NgModule({

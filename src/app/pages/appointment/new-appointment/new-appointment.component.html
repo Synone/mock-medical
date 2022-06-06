@@ -16,11 +16,11 @@
         <div class="p-input-icon-left">
           <i class="pi pi-user"></i>
           <input type="text" class="p-inputtext-sm" pInputText placeholder="Enter your full name..."
-            [formControlName]="fieldKeyNames.username" />
+            [formControlName]="fieldKeyNames.patientName" />
         </div>
-        <div *ngIf="isValidControl(fieldKeyNames.username)" class="isInvalid">
+        <div *ngIf="isValidControl(fieldKeyNames.patientName)" class="isInvalid">
 
-          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.username)">
+          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.patientName)">
             !
             {{msg}}
           </div>
@@ -32,11 +32,11 @@
         <div class="user-phone-number p-input-icon-left">
           <i class="pi pi-phone"></i>
           <input type="text" class="p-inputtext-sm" pInputText placeholder="Enter your phone number..."
-            [formControlName]="fieldKeyNames.userphone" />
+            [formControlName]="fieldKeyNames.patientPhone" />
         </div>
-        <div *ngIf="isValidControl(fieldKeyNames.userphone)" class="isInvalid">
+        <div *ngIf="isValidControl(fieldKeyNames.patientPhone)" class="isInvalid">
 
-          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.userphone)">
+          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.patientPhone)">
             !
             {{msg}}
           </div>
@@ -46,12 +46,21 @@
 
       <div class="field col-12 md:col-4 fa-input-wrapper">
         <div class="p-input-icon-left">
-          <select class="fa-newform form-select form-select-sm mb-2 fa-custom-select">
-            <option selected>Gender</option>
+          <select [formControlName]="fieldKeyNames.gender"
+            class="fa-newform form-select form-select-sm mb-2 fa-custom-select">
+            <!-- <option selected>Gender</option> -->
+            <option disabled selected value="">{{fieldKeyNames.gender | titlecase}}</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
           </select>
+        </div>
+        <div *ngIf="isValidControl(fieldKeyNames.gender)" class="isInvalid">
+
+          <div *ngFor="let msg of getErrorMessage(fieldKeyNames.gender)">
+            !
+            {{msg}}
+          </div>
         </div>
       </div>
 

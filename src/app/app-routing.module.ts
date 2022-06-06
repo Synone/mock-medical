@@ -4,6 +4,12 @@ import { PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((md) => md.LoginModule),
+  },
+
+  {
     path: 'appointment',
     loadChildren: () =>
       import('./pages/appointment/appointment.module').then(
@@ -15,13 +21,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/doctor/doctor.module').then((md) => md.DoctorModule),
   },
-  {
-    path: 'new-appointment',
-    loadChildren: () =>
-      import('./pages/appointment/new-appointment/appointment-new.module').then(
-        (md) => md.NewAppointmentModule
-      ),
-  },
+  // {
+  //   path: 'new-appointment',
+  //   loadChildren: () =>
+  //     import('./pages/appointment/new-appointment/appointment-new.module').then(
+  //       (md) => md.NewAppointmentModule
+  //     ),
+  // },
   {
     path: 'dashboard',
     loadChildren: () =>
@@ -32,7 +38,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/appointment',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
 ];

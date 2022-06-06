@@ -10,16 +10,23 @@ import {
 } from '@angular/forms';
 
 import { BaseComponent } from 'src/app/shared/components/base.component';
+import { AppointmentsService } from 'src/app/shared/services/appointments.service';
 
 @Component({
   selector: 'app-new-appointment',
   templateUrl: './new-appointment.component.html',
   styleUrls: ['./new-appointment.component.scss'],
+  providers: [AppointmentsService],
 })
 export class NewAppointmentComponent extends BaseComponent implements OnInit {
-  constructor(private fb: FormBuilder, private _location: Location) {
+  constructor(
+    private fb: FormBuilder,
+    private _location: Location,
+    private appointmentService: AppointmentsService
+  ) {
     super();
   }
+
   onDestroy(): void {}
   ngOnInit() {
     const me = this;
@@ -29,8 +36,8 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
   userForm!: FormGroup;
 
   public fieldKeyNames = {
-    username: 'username',
-    userphone: 'userphone',
+    patientName: 'username',
+    patientPhone: 'userphone',
     gender: 'gender',
     appointmentTime: 'appointmentTime',
     appointmentDate: 'appointmentDate',
@@ -100,11 +107,11 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
   private buildForm(): void {
     const me = this;
     me.userForm = me.fb.group({
-      [me.fieldKeyNames.username]: [
+      [me.fieldKeyNames.patientName]: [
         '',
         [Validators.required, Validators.minLength(me.minlength)],
       ],
-      [me.fieldKeyNames.userphone]: [
+      [me.fieldKeyNames.patientPhone]: [
         '',
         [
           Validators.required,
@@ -113,6 +120,7 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
           this.minlengthPhoneNumber(me.minlengthPhone),
         ],
       ],
+      [me.fieldKeyNames.gender]: ['', [Validators.required]],
       [me.fieldKeyNames.appointmentTime]: ['', [Validators.required]],
       [me.fieldKeyNames.appointmentDate]: ['', [Validators.required]],
     });
@@ -138,6 +146,7 @@ export class NewAppointmentComponent extends BaseComponent implements OnInit {
       return;
     }
     const valueOfForm = me.userForm.getRawValue();
+    console.log(valueOfForm);
 
     me._location.back();
   }

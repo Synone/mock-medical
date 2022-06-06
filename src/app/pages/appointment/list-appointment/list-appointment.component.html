@@ -18,19 +18,19 @@
             <div class="fa-list-patients__avatar">
               <img src="../../../../assets/icons/avatar.svg" alt="" />
             </div>
-            <p>{{ listItem?.patient }}</p>
+            <p>{{ listItem?.patientName }}</p>
           </div>
         </td>
         <td>
           <div class="fa-list-patients__items">
             <p class="test">
-              {{ listItem?.date }}
+              {{ listItem?.appointmentDate }}
             </p>
           </div>
         </td>
-        <td>{{ listItem?.time }}</td>
+        <td>{{ listItem?.appointmentTime }}</td>
         <td>{{ listItem?.gender }}</td>
-        <td>{{ listItem?.phoneNumber }}</td>
+        <td>{{ listItem?.patientPhone }}</td>
         <td>
           <div class="fa-list-patients__icons-container">
             <div class="fa-list-patients__action-icon">
@@ -46,14 +46,14 @@
         </td>
         <td>
           <div *ngIf="listItem?.active; else cancel" class="fa-list-patients__appointment">
-          Start Appointment
+            Start Appointment
           </div>
-          <ng-template #cancel >
+          <ng-template #cancel>
             <div class="fa-list-patients__canceled">
               Canceled
             </div>
           </ng-template>
-          
+
         </td>
       </tr>
     </ng-template>

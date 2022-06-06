@@ -10,6 +10,6 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit() {}
   newAppoint(): void {
-    this.router.navigate(['new-appointment']);
+    this.router.navigate(['appointment/new-appointment']);
   }
 }

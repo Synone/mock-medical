@@ -1,8 +1,8 @@
 export interface ListItem {
-  patient?: string;
-  date?: string;
-  time?: string;
+  patientName?: string;
+  appointmentDate?: string;
+  appointmentTime?: string;
   gender?: string;
-  phoneNumber?: number;
-  active?:boolean;
+  patientPhone?: number;
+  active?: boolean;
 }
